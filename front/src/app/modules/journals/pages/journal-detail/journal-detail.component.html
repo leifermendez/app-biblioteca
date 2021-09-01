@@ -1,0 +1,111 @@
+<app-navbar></app-navbar>
+<div class="container mt-4 mb-4 d-flex justify-content-center">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title mb-3">Detalle de la Revista</h3>
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="ID">Author</label>
+              <input class="form-control" type="text" formControlName="author" readonly>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="name">Titulo</label>
+              <div class="input-group">
+                <input class="form-control" type="text" formControlName="title" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="lastName">Edición</label>
+              <div class="input-group">
+                <input class="form-control" type="text" formControlName="edition" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="user">Palabra clave</label>
+              <div class="input-group">
+                <input class="form-control" type="text" formControlName="keyword" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="email">Tema</label>
+              <div class="input-group">
+                <input class="form-control" type="text" formControlName="theme" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="password">Copias</label>
+              <div class="input-group">
+                <input class="form-control" type="number" formControlName="copy" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="password">Disponibles</label>
+              <div class="input-group">
+                <input class="form-control" type="number" formControlName="available" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="password">Descripción</label>
+              <div class="input-group">
+                <input class="form-control" type="text" formControlName="description" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="password">Frecuencia Actual</label>
+              <div class="input-group">
+                <input class="form-control" type="text" formControlName="currentFrequency" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="password">Ejemplares</label>
+              <div class="input-group">
+                <input class="form-control" type="number" formControlName="specimens" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 d-flex justify-content-between">
+          <button type="button" class="btn btn-dark btn-lg" [routerLink]="['/', 'books-journals']">Regresar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

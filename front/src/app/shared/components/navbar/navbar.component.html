@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand ml-4" [routerLink]="['/', 'users']" routerLinkActive="router-link-active">Biblioteca</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngFor="let item of menu">
+          <a class="nav-link active" aria-current="page" [routerLink]="item?.path"
+            routerLinkActive="router-link-active">{{item.name}}</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Perfil
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <span class="dropdown-item"> {{user}} </span>
+            </li>
+            <!-- <li><a class="dropdown-item">Logout</a></li> -->
+            <li> <button class="bnt btn-danger dropdown-item" (click)=" logout()">Logout</button> </li>
+
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

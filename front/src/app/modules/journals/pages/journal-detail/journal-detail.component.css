@@ -1,0 +1,13 @@
+.card {
+  width: 400px;
+  background-color: #fff;
+  border: none;
+  border-radius: 12px
+}
+
+.form-control {
+  margin-top: 8px;
+  height: 38px;
+  border: 2px solid #eee;
+  border-radius: 10px
+}
