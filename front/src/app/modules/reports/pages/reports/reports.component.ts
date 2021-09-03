@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ReportsService } from '../../services/reports.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-reports',
@@ -40,7 +41,7 @@ export class ReportsComponent implements OnInit {
   reportValue: string = '';
   report: string = '';
   data: any;
-  showTable: boolean = false
+  loading!: boolean;
   constructor(
     private reportsService: ReportsService
   ) { }
@@ -49,15 +50,18 @@ export class ReportsComponent implements OnInit {
   }
 
   getReport() {
+    this.loading = true
     this.report = this.reportValue;
 
     const query = [
       `?report=${this.reportValue}`,
     ].join('');
 
-    this.reportsService.getReports(query).subscribe((res: any) => {
-      this.data = res.data
-    })
+    this.reportsService.getReports(query)
+      .pipe(finalize(() => this.loading = false))
+      .subscribe((res: any) => {
+        this.data = res.data
+      }, err => this.loading = false)
   }
 
 

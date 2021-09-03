@@ -9,7 +9,7 @@
       </option>
     </select>
     <div class="d-flex mb-4">
-      <button [disabled]="!reportValue" class="btn btn-success mx-2" (click)="getReport()">Generar</button>
+      <button [disabled]="!reportValue || loading" class="btn btn-success mx-2" (click)="getReport()">Generar</button>
       <button class="btn btn-dark" [routerLink]="['/','books-journals']"
         routerLinkActive="router-link-active">Regresar</button>
     </div>
