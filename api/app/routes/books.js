@@ -17,14 +17,14 @@ const {
 
 router.get('/',
   checkAuth,
-  checkRoleAuth(['admin', 'student']),
+  checkRoleAuth(['admin', 'student', 'librarian']),
   getItems
 )
 
 router.get('/:id',
   validateGetBook,
   checkAuth,
-  checkRoleAuth(['admin', 'student']),
+  checkRoleAuth(['admin', 'student', 'librarian']),
   getItem
 )
 

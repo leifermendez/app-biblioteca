@@ -13,20 +13,20 @@ router.get('/all',
 )
 router.get('/',
   checkAuth,
-  checkRoleAuth(['admin', 'student']),
+  checkRoleAuth(['admin', 'student', 'librarian']),
   getItemsUser
 )
 router.post('/',
   validateCreateJournalLoans,
   checkAuth,
-  checkRoleAuth(['admin', 'student']),
+  checkRoleAuth(['admin', 'student', 'librarian']),
   createItem
 )
 
 router.patch('/:id',
   validateUpdateJournalLoans,
   checkAuth,
-  checkRoleAuth(['admin', 'student']),
+  checkRoleAuth(['admin', 'student', 'librarian']),
   updateItem
 )
 
