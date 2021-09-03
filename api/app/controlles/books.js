@@ -14,6 +14,12 @@ const getItem = async (req, res) => {
   try {
     req = matchedData(req)
     const data = await bookModel.findById({ _id: req.id })
+    data.amountViews++
+    await bookModel.findByIdAndUpdate(data._id, data, {
+      new: true,
+      runValidators: true
+    })
+
     res.send({ data })
   } catch (e) {
     httpError(res, e)

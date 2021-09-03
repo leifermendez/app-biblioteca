@@ -2,6 +2,9 @@ const { validateRegister, validateLogin, } = require("./auth");
 const { validateCreateBook, validateGetBook, validateUpdateBook } = require("./books");
 const { validateCreateJournal, validateGetJournal, validateUpdateJournal } = require("./journals");
 const { validateCreate, validateGetItem, validateUpdate } = require("./users");
+const { validateCreateBooksLoans, validateGetBooksLoans, validateUpdateBooksLoans } = require("./booksLoans");
+const { validateCreateJournalLoans, validateUpdateJournalLoans } = require("./journalLoans");
+
 module.exports = {
   validateRegister,
   validateLogin,
@@ -13,5 +16,10 @@ module.exports = {
   validateUpdateBook,
   validateCreateJournal,
   validateGetJournal,
-  validateUpdateJournal
+  validateUpdateJournal,
+  validateCreateBooksLoans,
+  validateGetBooksLoans,
+  validateUpdateBooksLoans,
+  validateCreateJournalLoans,
+  validateUpdateJournalLoans
 }
