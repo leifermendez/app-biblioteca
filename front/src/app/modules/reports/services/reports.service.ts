@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NotificacitionService } from '../../../shared/services/notificacition.service';
-import { environment } from '../../../../environments/environment.prod';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
