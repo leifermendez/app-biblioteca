@@ -1,0 +1,11 @@
+{
+  "name": "sistema-biblioteca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node api/app.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
