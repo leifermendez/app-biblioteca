@@ -14,6 +14,11 @@ const getItem = async (req, res) => {
   try {
     req = matchedData(req)
     const data = await JournalModel.findById({ _id: req.id })
+    data.amountViews++
+    await JournalModel.findByIdAndUpdate(data._id, data, {
+      new: true,
+      runValidators: true
+    })
     res.send({ data })
   } catch (e) {
     httpError(res, e)

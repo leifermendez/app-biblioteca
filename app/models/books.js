@@ -33,6 +33,19 @@ const BookScheme = new mongoose.Schema({
     type: String,
     required: true
   },
+  amountViews: {
+    type: Number,
+    default: 0
+  },
+  amountLoans: {
+    type: Number,
+    default: 0
+  },
+  status: {
+    type: String,
+    enum: ['borrowed', 'avaible'],
+    default: 'avaible'
+  }
 },
   {
     timestamps: true,

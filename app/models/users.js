@@ -23,6 +23,10 @@ const UserScheme = new mongoose.Schema({
     password: {
         type: String
     },
+    amountLoans: {
+        type: Number,
+        default: 0
+    },
     role: {
         type: String,
         enum: ['librarian', 'student', 'admin'],

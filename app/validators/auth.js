@@ -14,6 +14,8 @@ const validateRegister = [
     .exists()
     .not()
     .isEmpty(),
+  check('role')
+    .optional(),
   (req, res, next) => {
     validateResult(req, res, next)
   }
