@@ -4,7 +4,7 @@ const booksLoansModel = require('../models/booksLoans')
 const bookModel = require('../models/books')
 const usersModel = require('../models/users')
 const { getLookBookLoans } = require('../middleware/db')
-const { loansBorrowed } = require('../helpers/Loansborrowed')
+const { loansBorrowed } = require('../helpers/loansborrowed')
 
 
 
