@@ -18,14 +18,14 @@ const {
 
 router.get('/',
   checkAuth,
-  checkRoleAuth(['admin', 'student']),
+  checkRoleAuth(['admin', 'student', 'librarian']),
   getItems
 )
 
 router.get('/:id',
   validateGetJournal,
   checkAuth,
-  checkRoleAuth(['admin', 'student']),
+  checkRoleAuth(['admin', 'student', 'librarian']),
   getItem
 )
 router.post('/',
