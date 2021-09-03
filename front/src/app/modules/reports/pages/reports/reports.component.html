@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5 bg-white">
+  <h1 class="text-center">Reportes</h1>
+
+  <div class="w-auto d-flex align-items-center justify-content-center my-4">
+    <select [(ngModel)]="reportValue" class="form-select w-25 mb-4" aria-label="Default select example">
+      <option [value]="report.value" *ngFor="let report of listReports">{{report.name}}
+      </option>
+    </select>
+    <div class="d-flex mb-4">
+      <button [disabled]="!reportValue" class="btn btn-success mx-2" (click)="getReport()">Generar</button>
+      <button class="btn btn-dark" [routerLink]="['/','books-journals']"
+        routerLinkActive="router-link-active">Regresar</button>
+    </div>
+  </div>
+  <div></div>
+
+  <div *ngIf="data">
+    <ng-container *ngIf="report === 'userLoan'">
+      <app-list-user [data]="data"></app-list-user>
+    </ng-container>
+    <ng-container *ngIf="report !== 'userLoan'">
+      <app-list-books-loans [data]="data" [report]="report"></app-list-books-loans>
+    </ng-container>
+
+  </div>
+
+</div>

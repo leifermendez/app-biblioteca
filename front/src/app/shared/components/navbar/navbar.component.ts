@@ -11,29 +11,44 @@ export class NavbarComponent implements OnInit {
   menu: Array<any> = [
     {
       path: ['/', 'users'],
-      name: 'usuarios'
+      name: 'Usuarios',
+      role: ['admin'],
     },
     {
       path: ['/', 'books-journals'],
-      name: 'Libros/Revistas'
+      name: 'Libros/Revistas',
+      role: ['admin', 'student'],
     },
-
+    {
+      path: ['/', 'reports'],
+      name: 'Reportes',
+      role: ['admin'],
+    },
+    {
+      path: ['/', 'loans', 'history'],
+      name: 'Historial',
+      role: ['student'],
+    },
+    {
+      path: ['/', 'loans'],
+      name: 'Prestamos de libro',
+      role: ['student'],
+    }
 
   ]
-  user!: string;
+  user!: any;
   constructor(
     private authService: AuthService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    const { name } = this.authService.currentUser();
-    this.user = name;
+    this.user = this.authService.currentUser();
   }
 
   logout() {
     this.authService.logout().then(() => {
-      this.router.navigate(['/', 'auth'])
+      this.router.navigate(['/', 'home'])
     })
   }
 

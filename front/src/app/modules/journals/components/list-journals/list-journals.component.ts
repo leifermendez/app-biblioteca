@@ -4,6 +4,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { JournalsService } from '../../services/journals.service';
 import { NotificacitionService } from '../../../../shared/services/notificacition.service';
+import { AuthService } from '../../../auth/services/auth.service';
+import { LoansService } from '../../../loans-books-journals/services/loans.service';
+import { Router } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list-journals',
@@ -17,14 +21,20 @@ export class ListJournalsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   journals: any[] = [];
+  user: any;
+  loading!: boolean;
   constructor(
     private journalsService: JournalsService,
     private notification: NotificacitionService,
+    private authService: AuthService,
+    private loansService: LoansService,
+    private router: Router
 
   ) { }
 
   ngOnInit(): void {
     this.loads();
+    this.user = this.authService.currentUser();
   }
 
   loads() {
@@ -56,6 +66,17 @@ export class ListJournalsComponent implements OnInit {
       }).catch((err) => {
         console.log(err);
       });
+  }
+  loansJournal(id: string) {
+    this.loading = true;
+    const body = {
+      journal: id
+    }
+    this.loansService.loansJournal(body)
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(res => {       
+        this.router.navigate(['/', 'loans'])
+      }, err => this.loading = false)
   }
 
 }

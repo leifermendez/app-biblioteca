@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Autor</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Edición</th>
+          <th scope="col">Palabra clave</th>
+          <th scope="col">descripción</th>
+          <th scope="col">tema</th>
+          <th scope="col">Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td>{{item.author}}</td>
+          <td>{{item.title}}</td>
+          <td>{{item.edition}}</td>
+          <td>{{item.keyword}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.theme}}</td>
+          <td *ngIf="report === 'bookLoan'">{{item.amountLoans}}</td>
+          <td *ngIf="report === 'bookViews'">{{item.amountViews}}</td>
+          <td *ngIf="report === 'journalLoan'">{{item.amountLoans}}</td>
+          <td *ngIf="report === 'journalViews'">{{item.amountViews}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

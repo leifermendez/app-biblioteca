@@ -5,10 +5,11 @@
         <mat-label>Filtrar</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
       </mat-form-field>
-
-      <button class="btn btn-primary rounded-circle" [routerLink]="['/', 'books']">
-        <i class="uil uil-plus"></i>
-      </button>
+      <div *ngIf="user.role ==='admin'">
+        <button class="btn btn-primary rounded-circle" [routerLink]="['/', 'books']">
+          <i class="uil uil-plus"></i>
+        </button>
+      </div>
     </div>
     <table mat-table [dataSource]="dataSource" matSort>
 
@@ -60,15 +61,27 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Acción </th>
         <td mat-cell *matCellDef="let row">
-          <button class="btn btn-success  btn-sm text-dark" [routerLink]="['/', 'books', 'detail', row._id]">
-            <i class="uil uil-eye"></i>
-          </button>
-          <button class="btn btn-warning btn-sm text-dark mx-2" [routerLink]="['/', 'books', row._id]">
-            <i class="uil uil-edit"></i>
-          </button>
-          <button class="btn btn-danger  btn-sm text-dark" (click)="deleteBook(row._id)">
-            <i class="uil uil-trash"></i>
-          </button>
+          <div *ngIf="user.role==='admin'">
+            <button class="btn btn-success  btn-sm text-dark" [routerLink]="['/', 'books', 'detail', row._id]">
+              <i class="uil uil-eye"></i>
+            </button>
+            <button class="btn btn-warning btn-sm text-dark mx-2" [routerLink]="['/', 'books', row._id]">
+              <i class="uil uil-edit"></i>
+            </button>
+            <button class="btn btn-danger  btn-sm text-dark" (click)="deleteBook(row._id)">
+              <i class="uil uil-trash"></i>
+            </button>
+          </div>
+          <div *ngIf="user.role !=='admin'">
+            <button class="btn btn-success  btn-sm" [routerLink]="['/', 'books', 'detail', row._id]">
+              Ver
+            </button>
+            <button [disabled]="row.available < 1 || loading" class="btn btn-warning btn-sm text-white mx-2"
+              (click)="loansBook(row._id)">
+              Prestar
+            </button>
+          </div>
+
         </td>
       </ng-container>
 

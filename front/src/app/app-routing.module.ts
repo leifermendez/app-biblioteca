@@ -4,9 +4,8 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/auth',
-    pathMatch: 'full'
+    path: 'home',
+    loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
   },
   {
     path: 'auth',
@@ -31,6 +30,21 @@ const routes: Routes = [
     path: 'journals',
     loadChildren: () => import('./modules/journals/journals.module').then(m => m.JournalsModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'loans',
+    loadChildren: () => import('./modules/loans-books-journals/loans-books-journals.module').then(m => m.LoansBooksJournalsModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'reports',
+    loadChildren: () => import('./modules/reports/reports.module').then(m => m.ReportsModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
   },
 ];
 

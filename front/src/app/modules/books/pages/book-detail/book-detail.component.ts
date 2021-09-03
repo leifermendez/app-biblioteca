@@ -45,7 +45,6 @@ export class BookDetailComponent implements OnInit {
     this.booksService.getBook(this.id)
       .pipe(finalize(() => this.loading = false))
       .subscribe((res: any) => {
-        console.log(res);
         this.form.patchValue(res.data)
       })
   }

@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+  <h3 *ngIf="!history">Libros y Revistas prestados</h3>
+  <h3 *ngIf="history">Historial</h3>
+  <mat-tab-group>
+    <mat-tab label="Libros">
+      <app-books></app-books>
+    </mat-tab>
+    <mat-tab label="Revistas">
+      <app-journals></app-journals>
+    </mat-tab>
+
+  </mat-tab-group>
+
+</div>

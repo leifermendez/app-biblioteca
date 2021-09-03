@@ -5,10 +5,6 @@
         <mat-label>Filtrar</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
       </mat-form-field>
-
-      <button *ngIf="user.role==='admin'" class="btn btn-primary rounded-circle" [routerLink]="['/', 'journals']">
-        <i class="uil uil-plus"></i>
-      </button>
     </div>
     <table mat-table [dataSource]="dataSource" matSort>
 
@@ -41,9 +37,9 @@
         <td mat-cell *matCellDef="let row"> {{row.description}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="currentFrequency">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Frecuencia Actual </th>
-        <td mat-cell *matCellDef="let row"> {{row.currentFrequency}} </td>
+      <ng-container matColumnDef="theme">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Temas </th>
+        <td mat-cell *matCellDef="let row"> {{row.theme}} </td>
       </ng-container>
 
       <ng-container matColumnDef="specimens">
@@ -51,45 +47,17 @@
         <td mat-cell *matCellDef="let row"> {{row.specimens}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="theme">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Temas </th>
-        <td mat-cell *matCellDef="let row"> {{row.theme}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="copy">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Copias </th>
-        <td mat-cell *matCellDef="let row"> {{row.copy}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="available">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Disponibles </th>
-        <td mat-cell *matCellDef="let row"> {{row.available}} </td>
-      </ng-container>
-
       <!-- Fruit Column -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Acción </th>
         <td mat-cell *matCellDef="let row">
-          <div *ngIf="user.role==='admin'">
-            <button class="btn btn-success  btn-sm text-dark" [routerLink]="['/', 'journals', 'detail', row._id]">
-              <i class="uil uil-eye"></i>
-            </button>
-            <button class="btn btn-warning btn-sm text-dark mx-2" [routerLink]="['/', 'journals', row._id]">
-              <i class="uil uil-edit"></i>
-            </button>
-            <button class="btn btn-danger  btn-sm text-dark" (click)="deleteJournal(row._id)">
-              <i class="uil uil-trash"></i>
-            </button>
-          </div>
-          <div *ngIf="user.role !=='admin'">
-            <button class="btn btn-success  btn-sm" [routerLink]="['/', 'journals', 'detail', row._id]">
-              Ver
-            </button>
-            <button [disabled]="row.available < 1 || loading" class="btn btn-warning btn-sm text-white mx-2"
-              (click)="loansJournal(row._id)">
-              Prestar
-            </button>
-          </div>
+          <button [disabled]="loading" *ngIf="!history" class="btn btn-danger btn-sm text-white mx-2"
+            (click)="returnJournal(row)">
+            Devolver
+          </button>
+          <button *ngIf="history" class="btn btn-success btn-sm text-white mx-2">
+            ver
+          </button>
         </td>
       </ng-container>
 

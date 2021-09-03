@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     });
 
     this.authService.checkSession(true).then(res => {
-      this.router.navigate(['', 'users'])
+      this.router.navigate(['', 'books-journals'])
     }).catch(e => console.log(e))
   }
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       .subscribe((res: any) => {
         const { data } = res;
         this.authService.setterSettings(data)
-        this.router.navigate(['', 'users'])
+        this.router.navigate(['', 'books-journals'])
       })
   }
 }
