@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "cd api node app.js"
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC"
 }
