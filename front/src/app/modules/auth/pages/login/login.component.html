@@ -15,8 +15,8 @@
             <input type="password" formControlName="password" class="form-control">
           </div>
           <div class="mb-4 text-center">
-            <button type="submit" class="btn btn-primary btn-lg" ngxLoading [loadingFlag]="loading"
-              [textInitial]="'Iniciar Sesión'" [textLoading]="'Cargando...'">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-primary btn-lg" ngxLoading
+              [loadingFlag]="loading" [textInitial]="'Iniciar Sesión'" [textLoading]="'Cargando...'">
             </button>
           </div>
         </form>
