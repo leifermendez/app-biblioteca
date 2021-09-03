@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      user: ['adminpractica', [Validators.required, Validators.email]],
-      password: ['adminpractica', Validators.required]
+      user: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     });
 
     this.authService.checkSession(true).then(res => {

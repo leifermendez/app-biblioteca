@@ -27,12 +27,12 @@ export class NavbarComponent implements OnInit {
     {
       path: ['/', 'loans', 'history'],
       name: 'Historial',
-      role: ['student'],
+      role: ['student', 'librarian'],
     },
     {
       path: ['/', 'loans'],
       name: 'Prestamos de libro',
-      role: ['student'],
+      role: ['student', 'librarian'],
     }
 
   ]
