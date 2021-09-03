@@ -4,7 +4,7 @@ const journalLoansModel = require('../models/journalsLoans')
 const journalModel = require('../models/journals')
 const usersModel = require('../models/users')
 const { getLookJournalLoans } = require('../middleware/db')
-const { loansBorrowed } = require('../helpers/Loansborrowed')
+const { loansBorrowed } = require('../helpers/loansborrowed')
 
 
 const updateJournal = async (id = '') => {
